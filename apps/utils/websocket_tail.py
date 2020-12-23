@@ -4,7 +4,7 @@ import paramiko, logging, time
 from paramiko_expect import SSHClientInteraction
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
-from common.custom import RedisObj
+from apps.common.custom import RedisObj
 
 info_logger = logging.getLogger('info')
 

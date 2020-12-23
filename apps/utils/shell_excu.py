@@ -2,10 +2,10 @@
 # @Author  : xufqing
 from fabric2 import Connection
 from invoke import Responder, Result
-from utils.websocket_tail import Tailf
+from apps.utils.websocket_tail import Tailf
 from io import StringIO
 import logging, os
-from cmdb.models import DeviceInfo,ConnectionInfo
+from apps.cmdb.models import DeviceInfo,ConnectionInfo
 
 error_logger = logging.getLogger('error')
 info_logger = logging.getLogger('info')

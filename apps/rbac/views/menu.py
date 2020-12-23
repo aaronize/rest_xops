@@ -3,7 +3,7 @@
 from rest_framework.viewsets import ModelViewSet
 from ..models import Menu
 from ..serializers.menu_serializer import MenuSerializer
-from common.custom import CommonPagination,RbacPermission,TreeAPIView
+from apps.common.custom import CommonPagination,RbacPermission,TreeAPIView
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 

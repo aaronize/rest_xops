@@ -1,5 +1,5 @@
 from django.urls import path,include
-from cmdb.views import dict,scan,asset,connection,business,group,label
+from apps.cmdb.views import dict,scan,asset,connection,business,group,label
 from rest_framework import routers
 
 router = routers.SimpleRouter()

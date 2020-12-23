@@ -1,9 +1,12 @@
+# coding: utf-8
+
 from datetime import datetime
 from django.db import models
 from django.contrib.auth import get_user_model
 from simple_history.models import HistoricalRecords
 
 User = get_user_model()
+
 
 class AbstractMode(models.Model):
     pid = models.ForeignKey(
@@ -12,6 +15,7 @@ class AbstractMode(models.Model):
 
     class Meta:
         abstract = True
+
 
 class Dict(AbstractMode):
     key = models.CharField(max_length=80, verbose_name='键')
@@ -22,12 +26,14 @@ class Dict(AbstractMode):
         verbose_name = '字典'
         verbose_name_plural = verbose_name
 
+
 class TimeAbstract(models.Model):
     add_time = models.DateTimeField(auto_now_add=True, verbose_name="添加时间")
     modify_time = models.DateTimeField(auto_now=True, verbose_name="更新时间")
 
     class Meta:
         abstract = True
+
 
 class DeviceAbstract(models.Model):
     status = models.CharField(max_length=10, blank=True, default='', verbose_name='状态')
@@ -42,6 +48,7 @@ class DeviceAbstract(models.Model):
     class Meta:
         abstract = True
 
+
 class ConnectionAbstract(models.Model):
     hostname = models.CharField(max_length=80, verbose_name='IP/域名')
     auth_type = models.CharField(max_length=30, default='',verbose_name='认证类型')
@@ -49,9 +56,9 @@ class ConnectionAbstract(models.Model):
     username = models.CharField(max_length=50, blank=True, default='', verbose_name='用户名/key')
     password = models.CharField(max_length=80, blank=True, default='', verbose_name='密码')
 
-
     class Meta:
         abstract = True
+
 
 class ConnectionInfo(ConnectionAbstract, TimeAbstract):
     is_public = models.BooleanField(default=False, verbose_name="是否公开")
@@ -62,6 +69,7 @@ class ConnectionInfo(ConnectionAbstract, TimeAbstract):
         verbose_name = '连接信息'
         verbose_name_plural = verbose_name
 
+
 class DeviceScanInfo(DeviceAbstract, ConnectionAbstract, TimeAbstract):
     '''
     储存扫描成功后的设备信息临时表
@@ -71,6 +79,7 @@ class DeviceScanInfo(DeviceAbstract, ConnectionAbstract, TimeAbstract):
     class Meta:
         verbose_name = '扫描信息'
         verbose_name_plural = verbose_name
+
 
 class DeviceInfo(AbstractMode, DeviceAbstract, TimeAbstract):
     '''
@@ -101,6 +110,7 @@ class DeviceInfo(AbstractMode, DeviceAbstract, TimeAbstract):
     def _history_user(self, value):
         self.changed_by = value
 
+
 class Business(TimeAbstract):
     name = models.CharField(max_length=50, verbose_name='业务名称')
     desc = models.CharField(max_length=255, blank=True, null=True, verbose_name='备注')
@@ -108,6 +118,7 @@ class Business(TimeAbstract):
     class Meta:
         verbose_name = '业务'
         verbose_name_plural = verbose_name
+
 
 class DeviceGroup(TimeAbstract):
     name = models.CharField(max_length=50, verbose_name='组名')
@@ -117,6 +128,7 @@ class DeviceGroup(TimeAbstract):
     class Meta:
         verbose_name = '设备组'
         verbose_name_plural = verbose_name
+
 
 class Label(TimeAbstract):
     name = models.CharField(max_length=50, verbose_name='标签名')

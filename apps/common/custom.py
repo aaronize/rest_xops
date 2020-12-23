@@ -37,12 +37,11 @@ class CommonPagination(PageNumberPagination):
 
 
 class RbacPermission(BasePermission):
-    '''
+    """
     自定义权限
-    '''
-
+    """
     @classmethod
-    def get_permission_from_role(self, request):
+    def get_permission_from_role(cls, request):
         try:
             perms = request.user.roles.values(
                 'permissions__method',
@@ -68,9 +67,9 @@ class RbacPermission(BasePermission):
 
 
 class ObjPermission(BasePermission):
-    '''
+    """
     密码管理对象级权限控制
-    '''
+    """
 
     def has_object_permission(self, request, view, obj):
         perms = RbacPermission.get_permission_from_role(request)

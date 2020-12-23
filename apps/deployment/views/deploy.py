@@ -5,17 +5,17 @@ from rest_framework.viewsets import ReadOnlyModelViewSet
 from rest_xops.code import *
 from rest_xops.basic import XopsResponse
 from ..models import Project, DeployRecord
-from cmdb.models import DeviceInfo, ConnectionInfo
-from utils.shell_excu import Shell, connect_init
+from apps.cmdb.models import DeviceInfo, ConnectionInfo
+from apps.utils.shell_excu import Shell, connect_init
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 import os, logging, time
-from common.custom import CommonPagination, RbacPermission
+from apps.common.custom import CommonPagination, RbacPermission
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from ..serializers.project_serializer import DeployRecordSerializer
-from utils.websocket_tail import Tailf
+from apps.utils.websocket_tail import Tailf
 from ..tasks import deploy
-from common.custom import RedisObj
+from apps.common.custom import RedisObj
 from django.conf import settings
 from django.http import FileResponse
 from ..tasks import local_tailf

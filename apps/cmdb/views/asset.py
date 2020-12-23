@@ -3,13 +3,13 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView
 from ..serializers.asset_serializer import DeviceInfoSerializer, DeviceInfoListSerializer, DeviceListSerializer
-from common.custom import CommonPagination, RbacPermission
+from apps.common.custom import CommonPagination, RbacPermission
 from rest_framework.filters import SearchFilter, OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from ..models import DeviceInfo
-from deployment.models import Project
+from apps.deployment.models import Project
 from rest_xops.basic import XopsResponse
 from rest_xops.code import *
 from django.db.models import Q

@@ -1,15 +1,15 @@
 # @Time    : 2019/4/13 8:22
 # @Author  : xufqing
 
-from deployment.models import Project, DeployRecord
-from utils.shell_excu import Shell, connect_init
-from utils.common import includes_format, excludes_format
-from utils.websocket_tail import Tailf
+from apps.deployment.models import Project, DeployRecord
+from apps.utils.shell_excu import Shell, connect_init
+from apps.utils.common import includes_format, excludes_format
+from apps.utils.websocket_tail import Tailf
 from django.conf import settings
 import os, time, logging
 from celery import Task
 from rest_xops.celery import app
-from common.custom import RedisObj
+from apps.common.custom import RedisObj
 
 error_logger = logging.getLogger('error')
 info_logger = logging.getLogger('info')

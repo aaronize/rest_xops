@@ -40,9 +40,17 @@ INSTALLED_APPS = [
     'channels',
     'corsheaders',  # 跨域
     'django_filters',
-    'rbac',
-    'cmdb',
-    'deployment',
+    'apps.rbac.apps.RbacConfig',
+    'apps.cmdb.apps.CmdbConfig',
+    'apps.deployment.apps.DeploymentConfig',
+
+    # 'apps.rbac',
+    # 'apps.cmdb',
+    # 'apps.deployment',
+
+    # 'rbac',
+    # 'cmdb',
+    # 'deployment',
 
 ]
 
@@ -90,11 +98,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rest_xops',
-        'HOST': 'localhost',
-        'USER': 'root',
-        'PASSWORD': '123456',
+        'HOST': '192.168.152.34',
+        'USER': 'remote_rw',
+        'PASSWORD': 'ucloud46cn',
         'PORT': '3306',
-        'OPTIONS': { 'init_command': 'SET storage_engine=INNODB;' }
+        # 'OPTIONS': {
+        #     'init_command': 'SET storage_engine=INNODB;'
+        # }
     }
 }
 
@@ -119,14 +129,17 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.BasicAuthentication',#
-        'rest_framework.authentication.SessionAuthentication',#
+        'rest_framework.authentication.BasicAuthentication',    #
+        'rest_framework.authentication.SessionAuthentication',  #
     ),
+    # 'DEFAULT_PERMISSION_CLASSES': {
+    #     'rest_framework.authentication.IsAuthenticated',
+    # },
     # 自定义异常处理
     'EXCEPTION_HANDLER': 'apps.common.custom.xops_exception_handler'
 }
 
-#jwt setting
+# jwt setting
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=3),
     'JWT_AUTH_HEADER_PREFIX': 'Bearer',

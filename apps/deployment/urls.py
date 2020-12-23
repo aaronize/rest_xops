@@ -1,7 +1,7 @@
 # @Time    : 2019/2/27 14:42
 # @Author  : xufqing
 from django.urls import path,include
-from deployment.views import project, deploy, applog
+from apps.deployment.views import project, deploy, applog
 from rest_framework import routers
 
 router = routers.SimpleRouter()

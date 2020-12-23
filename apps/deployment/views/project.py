@@ -4,7 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.views import APIView
 from ..models import Project
 from ..serializers.project_serializer import ProjectSerializer, ProjectListSerializer
-from common.custom import CommonPagination, RbacPermission
+from apps.common.custom import CommonPagination, RbacPermission
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from django_filters.rest_framework import DjangoFilterBackend
