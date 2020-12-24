@@ -38,7 +38,11 @@ class UserAuthView(APIView):
     def post(self, request, *args, **kwargs):
         username = request.data.get('username')
         password = request.data.get('password')
+
+        print(">>>> 用户名：{username}, 密码：{password}".format(username=username, password=password))
         user = authenticate(username=username, password=password)
+
+        print(">>>> user", user)
         if user:
             payload = jwt_payload_handler(user)
             return XopsResponse({'token': jwt.encode(payload, SECRET_KEY)}, status=OK)

@@ -64,6 +64,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("手机号已经被注册")
         return mobile
 
+
 class UserInfoListSerializer(serializers.ModelSerializer):
     '''
     公共users

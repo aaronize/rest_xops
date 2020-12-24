@@ -2,7 +2,8 @@
 # @Author  : xufqing
 
 from channels.generic.websocket import AsyncWebsocketConsumer
-from common.custom import RedisObj
+from apps.common.custom import RedisObj
+
 
 class ConsoleMsgConsumer(AsyncWebsocketConsumer):
     async def connect(self):
